@@ -3,10 +3,10 @@ const BASE = BigInt(ALPHABET.length); // 62
 
 export function encodeBase62(num: bigint | number): string {
   let n = BigInt(num);
-  if (n === 0n) return ALPHABET[0];
+  if (n === BigInt(0)) return ALPHABET[0];
 
   let result = '';
-  while (n > 0n) {
+  while (n > BigInt(0)) {
     const remainder = Number(n % BASE);
     result = ALPHABET[remainder] + result;
     n = n / BASE;
@@ -15,7 +15,7 @@ export function encodeBase62(num: bigint | number): string {
 }
 
 export function decodeBase62(str: string): bigint {
-  let result = 0n;
+  let result = BigInt(0);
   for (let i = 0; i < str.length; i++) {
     const char = str[i];
     const index = ALPHABET.indexOf(char);
